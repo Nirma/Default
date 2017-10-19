@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/Nirma/Default.svg?branch=master)](https://travis-ci.org/Nirma/Default)
 ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-333333.svg)
 ![Swift 4.0](https://img.shields.io/badge/Swift-4.0-orange.svg)
-[![CocoaPods compatible](https://img.shields.io/cocoapods/v/DefaultLib.svg)](#cocoapods)
+[![CocoaPods compatible](https://img.shields.io/cocoapods/v/Default.svg)](#cocoapods)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
