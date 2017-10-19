@@ -1,0 +1,16 @@
+disabled_rules: 
+  - cyclomatic_complexity
+  - compiler_protocol_init
+  - force_cast
+  - colon
+  - comma
+  - control_statement
+  - file_length
+  - type_body_length
+opt_in_rules:
+  - empty_count
+included: 
+  - UIFontComplete
+  - UIFontCompleteTests      
+line_length: 180
+reporter: "xcode" 
