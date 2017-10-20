@@ -131,7 +131,7 @@ If you use CocoaPods to manage your dependencies, simply add
 Default to your `Podfile`:
 
 ```ruby
-pod 'DefaultLib'
+pod 'Default'
 ```
 
 ## Requirements
