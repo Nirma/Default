@@ -22,7 +22,7 @@ Using objects specificaly for storing a set of data in UserDefaults allows setti
 
 # Features
 - [x] Read and write custom objects directly to `UserDefaults` that conform to `Codable`
-- [x] Provides an alternative to `UserDefaults` with `DefaultStorable`
+- [x] Provides an alternative API to `UserDefaults` with `DefaultStorable`
 
 ### Dont see a feature you need?
 Feel free to open an Issue requesting the feature you want or send over a pull request!
