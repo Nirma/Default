@@ -9,12 +9,15 @@
 Modern interface to UserDefaults + Codable support
 
 # What is Default?
-`Default` is a library that extends what `UserDefaults` can do by providing extensions for saving custom objects that conform to `Codable` and also providing a new interface to UserDefaults described below, via `DefaultStorable`.
+`Default` is a library that extends what `UserDefaults` can do by providing extensions for saving custom objects that conform to `Codable` and also providing a new interface to UserDefaults described below, via the protocol `DefaultStorable`.
 You can use only the `Codable` support extensions or the `DefaultStorable` protocol extensions or both. (or none)
 
 # Features
 - [x] Read and write custom objects directly to `UserDefaults` that conform to `Codable`
 - [x] Provides an alternative to `UserDefaults` with `DefaultStorable`
+
+### Dont see a feature you need?
+Feel free to open an Issue requesting the feature you want or send over a pull request!
 
 # Usage
 ## `DefaultStorable` - A _better way_ of interacting with `UserDefaults`
@@ -108,9 +111,6 @@ if let data = UserDefaults.standard.data(forKey: "volume"),
    }
    
 ```
-
-### Dont see a feature you need?
-Feel free to open an Issue requesting the feature you want or send over a pull request!
 
 ## Installation
 
