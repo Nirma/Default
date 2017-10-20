@@ -10,7 +10,15 @@ Modern interface to UserDefaults + Codable support
 
 # What is Default?
 `Default` is a library that extends what `UserDefaults` can do by providing extensions for saving custom objects that conform to `Codable` and also providing a new interface to UserDefaults described below, via the protocol `DefaultStorable`.
-You can use only the `Codable` support extensions or the `DefaultStorable` protocol extensions or both. (or none)
+You can use only the `Codable` support extensions or the `DefaultStorable` protocol extensions or both. (or none, thats cool too)
+
+# Why default?
+This library has 
+Storing keys and values in defaults the normal way is error prone because typing out the string value for a key 
+every time leaves the possibility of mistyped keys and keeping track of which keys are used and what is currently stored in 
+`UserDefaults` is somewhat hard. 
+Defining objects specifically for storing in user defaults makes the job of keeping track of what is currently being stored in `UserDefaults` as simple as searching the project's source code for instances that conform to `DefaultStorable`.
+Using objects specificaly for storing a set of data in UserDefaults allows settings for a certain piece of data to be logically grouped together.
 
 # Features
 - [x] Read and write custom objects directly to `UserDefaults` that conform to `Codable`
