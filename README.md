@@ -120,6 +120,17 @@ if let data = UserDefaults.standard.data(forKey: "volume"),
    
 ```
 
+### How does this library work?
+`UserDefaults` requires custom types to confrom to NSCoding and be a subclass of `NSObject`.
+Doing that is a little time consuming, and conforming to `NSCoding` requires implementing Decoding / Encoding methods
+that take a bit of code to implement.
+The good news is that `Data` conforms to `NSCoding` so if you can find a way to convert your object to `Data` then you can store it in `UserDefaults`, The `Codable` protocol in Swift 4 does just that!
+This library takes advantage of the `Codable` protocol introduced in Swift 4. 
+The way it works is by taking an object that conforms to `Codable` and encodeing it into 
+an `Data` object which can then be stored in `UserDefaults`, then when you want to read it back out again just convert using `Codable` again!
+
+Its that Simple!
+
 ## Installation
 
 #### Carthage
