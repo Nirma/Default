@@ -12,6 +12,13 @@ Modern interface to UserDefaults + Codable support
 `Default` is a library that extends what `UserDefaults` can do by providing extensions for saving custom objects that conform to `Codable` and also providing a new interface to UserDefaults described below, via the protocol `DefaultStorable`.
 You can use only the `Codable` support extensions or the `DefaultStorable` protocol extensions or both. (or none, thats cool too)
 
+# Features
+- [x] Read and write custom objects directly to `UserDefaults` that conform to `Codable`
+- [x] Provides an alternative API to `UserDefaults` with `DefaultStorable`
+
+### Dont see a feature you need?
+Feel free to open an Issue requesting the feature you want or send over a pull request!
+
 # Why default?
 This library has 
 Storing keys and values in defaults the normal way is error prone because typing out the string value for a key 
@@ -19,13 +26,6 @@ every time leaves the possibility of mistyped keys and keeping track of which ke
 `UserDefaults` is somewhat hard. 
 Defining objects specifically for storing in user defaults makes the job of keeping track of what is currently being stored in `UserDefaults` as simple as searching the project's source code for instances that conform to `DefaultStorable`.
 Using objects specificaly for storing a set of data in UserDefaults allows settings for a certain piece of data to be logically grouped together.
-
-# Features
-- [x] Read and write custom objects directly to `UserDefaults` that conform to `Codable`
-- [x] Provides an alternative API to `UserDefaults` with `DefaultStorable`
-
-### Dont see a feature you need?
-Feel free to open an Issue requesting the feature you want or send over a pull request!
 
 # Usage
 ## `DefaultStorable` - A _better way_ of interacting with `UserDefaults`
@@ -84,40 +84,31 @@ UserDefaults.standard.df.fetch(forKey: key, type: VolumeSetting.self)
 
 ```
 
-### Alternative to using `Codable`
+# Customization
+If the default behaviour of `Default` does not quite fit your needs, then any of the default implementation details
+can be overridden. 
+
+The most commonly overriden properties are `defaultIdentifier` and `defaults`.
+
+### `defaultIdentifier`
+
+`defaultIdentifier` is the key by which your object will be stored.
+This defaults to the type name of the object being stored.
+
 ```swift
-// 1: Define class 
-class VolumeSetting: NSObject, NSCoding {
-    let sourceName: String
-    let value: Double
-    init(sourceName: String, value: Double) {
-        self.sourceName = sourceName
-        self.value = value
+  public static var defaultIdentifier: String {
+        return String(describing: type(of: self))
     }
-    required init(coder decoder: NSCoder) {
-        self.sourceName = decoder.decodeObject(forKey: "sourceName") as? String ?? ""
-        self.value = decoder.decodeDouble(forKey: "value")
+```
+
+### `defaults`
+`defaults` will return the `UserDefaults` database that your application will store defaults objects in. 
+The default implementation returns `UserDefaults.standard`
+
+```swift
+    public static var defaults: UserDefaults {
+        return UserDefaults.standard
     }
-
-    func encode(with coder: NSCoder) {
-        coder.encode(sourceName, forKey: "sourceName")
-        coder.encode(value, forKey: "value")
-    }
-}
-
-// 2: Write
-
-let setting = VolumeSetting(sourceName: "Super Expensive Headphone Amp", value: 0.4)
-let encodedData = NSKeyedArchiver.archivedData(withRootObject: setting)
-UserDefaults.standard.set(encodedData, forKey: "volume")
-
-// 3: Read
-
-if let data = UserDefaults.standard.data(forKey: "volume"),
-   let volumeSetting = NSKeyedUnarchiver.unarchiveObject(with: data) as? VolumeSetting {
-   // do something
-   }
-   
 ```
 
 ### How does this library work?
