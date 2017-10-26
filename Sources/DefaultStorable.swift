@@ -26,6 +26,7 @@ import Foundation
 public protocol DefaultStorable {
     static var defaults: UserDefaults { get }
     static var defaultIdentifier: String { get }
+    static var defaultValue: Self? { get }
     static func fetchFromDefaults(key: String?) -> Self?
     func storeToDefaults(key: String?)
 }
@@ -37,6 +38,9 @@ extension DefaultStorable where Self: Codable {
     public static var defaults: UserDefaults {
         return UserDefaults.standard
     }
+    public static var defaultValue: Self? {
+        return nil
+    }
     public func storeToDefaults(key: String? = nil) {
         let key: String = key ?? Self.defaultIdentifier
         Self.defaults.df.store(self, forKey: key)
@@ -44,6 +48,6 @@ extension DefaultStorable where Self: Codable {
 
     public static func fetchFromDefaults(key: String? = nil) -> Self? {
         let key: String = key ?? defaultIdentifier
-        return defaults.df.fetch(forKey: key, type: Self.self)
+        return defaults.df.fetch(forKey: key, type: Self.self) ?? defaultValue
     }
 }
