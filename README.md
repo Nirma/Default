@@ -10,13 +10,13 @@ Modern interface to UserDefaults + Codable support
 
 # What is Default?
 `Default` is a library that extends what `UserDefaults` can do by providing extensions for saving custom objects that conform to `Codable` and also providing a new interface to UserDefaults described below, via the protocol `DefaultStorable`.
-You can use only the `Codable` support extensions or the `DefaultStorable` protocol extensions or both. (or none, thats cool too)
+You can use only the `Codable` support extensions or the `DefaultStorable` protocol extensions or both. (or none, that's cool too)
 
 # Features
 - [x] Read and write custom objects directly to `UserDefaults` that conform to `Codable`
 - [x] Provides an alternative API to `UserDefaults` with `DefaultStorable`
 
-### Dont see a feature you need?
+### Don't see a feature you need?
 Feel free to open an Issue requesting the feature you want or send over a pull request!
 
 # Why default?
@@ -25,7 +25,7 @@ Storing keys and values in defaults the normal way is error prone because typing
 every time leaves the possibility of mistyped keys and keeping track of which keys are used and what is currently stored in 
 `UserDefaults` is somewhat hard. 
 Defining objects specifically for storing in user defaults makes the job of keeping track of what is currently being stored in `UserDefaults` as simple as searching the project's source code for instances that conform to `DefaultStorable`.
-Using objects specificaly for storing a set of data in UserDefaults allows settings for a certain piece of data to be logically grouped together.
+Using objects specifically for storing a set of data in UserDefaults allows settings for a certain piece of data to be logically grouped together.
 
 # Usage
 ## `DefaultStorable` - A _better way_ of interacting with `UserDefaults`
@@ -88,7 +88,7 @@ UserDefaults.standard.df.fetch(forKey: key, type: VolumeSetting.self)
 If the default behaviour of `Default` does not quite fit your needs, then any of the default implementation details
 can be overridden. 
 
-The most commonly overriden properties are `defaultIdentifier` and `defaults`.
+The most commonly overridden properties are `defaultIdentifier` and `defaults`.
 
 ### `defaultIdentifier`
 
@@ -117,10 +117,10 @@ Doing that is a little time consuming, and conforming to `NSCoding` requires imp
 that take a bit of code to implement.
 The good news is that `Data` conforms to `NSCoding` so if you can find a way to convert your object to `Data` then you can store it in `UserDefaults`, The `Codable` protocol in Swift 4 does just that!
 This library takes advantage of the `Codable` protocol introduced in Swift 4. 
-The way it works is by taking an object that conforms to `Codable` and encodeing it into 
-an `Data` object which can then be stored in `UserDefaults`, then when you want to read it back out again just convert using `Codable` again!
+The way it works is by taking an object that conforms to `Codable` and encoding it into 
+a `Data` object which can then be stored in `UserDefaults`, then when you want to read it back out again just convert using `Codable` again!
 
-Its that Simple!
+It's that Simple!
 
 ## Installation
 
