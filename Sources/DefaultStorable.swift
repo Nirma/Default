@@ -27,26 +27,29 @@ public protocol DefaultStorable {
     static var defaults: UserDefaults { get }
     static var defaultIdentifier: String { get }
     static var defaultValue: Self? { get }
-    static func fetchFromDefaults(key: String?) -> Self?
-    func storeToDefaults(key: String?)
+    static func read(forKey key: String?) -> Self?
+    func write(withKey key: String?)
 }
 
 extension DefaultStorable where Self: Codable {
     public static var defaultIdentifier: String {
         return String(describing: type(of: self))
     }
+
     public static var defaults: UserDefaults {
         return UserDefaults.standard
     }
+
     public static var defaultValue: Self? {
         return nil
     }
-    public func storeToDefaults(key: String? = nil) {
+
+    public func write(withKey key: String? = nil) {
         let key: String = key ?? Self.defaultIdentifier
         Self.defaults.df.store(self, forKey: key)
     }
 
-    public static func fetchFromDefaults(key: String? = nil) -> Self? {
+    public static func read(forKey key: String? = nil) -> Self? {
         let key: String = key ?? defaultIdentifier
         return defaults.df.fetch(forKey: key, type: Self.self) ?? defaultValue
     }
