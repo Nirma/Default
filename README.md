@@ -49,15 +49,29 @@ struct VisualSettings: Codable, DefaultStorable {
 ### Create & Save the object to `UserDefaults`
 ```swift
 let settings = VisualSettings(themeName: "bright", backgroundImageURL: URL(string: "https://..."))
-settings.storeToDefaults()
+settings.write()
+```
+If you need to save the data under a different key other than the default key (the type name, in this case `"VisualSettings"`) then this can be achieved by providing the optional argument to `write(withKey:)`:
+```swift
+let settings = VisualSettings(themeName: "bright", backgroundImageURL: URL(string: "https://..."))
+settings.write(withKey: "someUniqueKey")
 ```
 
 ### Read it back later when ya need it!
 ```swift
-if let settings = VisualSettings.fetchFromDefaults() {
+if let settings = VisualSettings.read() {
     // Do something
 }
 ```
+If you saved the default under a unque key then it can be read back by providing the optional argument to `read(forKey:)`:
+
+```swift
+if let settings = VisualSettings.read(forKey: "someUniqueKey") {
+    // Do something
+}
+```
+
+
 
 ## Swift 4 `Codable` Support
 This library offers support for directly storing custom objects to `UserDefaults` that conform to `Codable`.
