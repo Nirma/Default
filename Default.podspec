@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Default"
-  s.version      = "1.0.0"
+  s.version      = "2.0.0"
   s.summary      = "Modern interface to UserDefaults + Codable support"
   s.description  = <<-DESC
                    Modern interface to UserDefaults + Codable support
