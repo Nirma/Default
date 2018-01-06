@@ -29,6 +29,7 @@ public protocol DefaultStorable {
     static var defaultValue: Self? { get }
     static func read(forKey key: String?) -> Self?
     func write(withKey key: String?)
+    func clear(forKey key: String?)
 }
 
 extension DefaultStorable where Self: Codable {
@@ -52,5 +53,10 @@ extension DefaultStorable where Self: Codable {
     public static func read(forKey key: String? = nil) -> Self? {
         let key: String = key ?? defaultIdentifier
         return defaults.df.fetch(forKey: key, type: Self.self) ?? defaultValue
+    }
+
+    public func clear(forKey key: String? = nil) {
+        let key: String = key ?? Self.defaultIdentifier
+        return Self.defaults.removeObject(forKey: key)
     }
 }
