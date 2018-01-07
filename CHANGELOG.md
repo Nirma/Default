@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 
 --- 
 
+## [2.1.0](https://github.com/Nirma/Default/releases/tag/2.1.0) (01/07/2018)
+
+#### Summary
+This release introduces adds a new clear() method that adds a method for deleting Default objects.
+
+Thanks @nitrag for putting this together!
+
+## Changes
+- `clear()` method has been added for removing objects managed by `Default` from database.
+
+
 ## [2.0.0](https://github.com/Nirma/Default/releases/tag/2.0.0) (11/20/2017)
 
 #### Summary
