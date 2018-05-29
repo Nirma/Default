@@ -54,6 +54,10 @@ extension DefaultStorable where Self: Codable {
         let key: String = key ?? defaultIdentifier
         return defaults.df.fetch(forKey: key, type: Self.self) ?? defaultValue
     }
+    
+    public func clear(forKey key: String? = nil) {
+        type(of: self).clear(forKey: key)
+    }
 
     public static func clear(forKey key: String? = nil) {
         let key: String = key ?? Self.defaultIdentifier
