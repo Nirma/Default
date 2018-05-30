@@ -30,6 +30,7 @@ public protocol DefaultStorable {
     static func read(forKey key: String?) -> Self?
     func write(withKey key: String?)
     func clear(forKey key: String?)
+    static func clear(forKey key: String?)
 }
 
 extension DefaultStorable where Self: Codable {
@@ -56,6 +57,10 @@ extension DefaultStorable where Self: Codable {
     }
 
     public func clear(forKey key: String? = nil) {
+        type(of: self).clear(forKey: key)
+    }
+
+    public static func clear(forKey key: String? = nil) {
         let key: String = key ?? Self.defaultIdentifier
         return Self.defaults.removeObject(forKey: key)
     }
