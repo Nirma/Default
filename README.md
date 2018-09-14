@@ -1,3 +1,5 @@
+<img src="cassette.jpg" width="40%">
+
 # Default
 [![Build Status](https://travis-ci.org/Nirma/Default.svg?branch=master)](https://travis-ci.org/Nirma/Default)
 ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-333333.svg)
