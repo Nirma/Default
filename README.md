@@ -76,7 +76,7 @@ if let settings = VisualSettings.read(forKey: "someUniqueKey") {
 
 
 ## Swift 4 `Codable` Support
-This library offers support for directly storing custom objects to `UserDefaults` that conform to `Codable`.
+This library offers support for directly storing custom objects within `UserDefaults` that conform to `Codable`.
 With the release of Swift 4 comes the `Codable` protocol, which provides support for serializing objects.
 `UserDefaults` has not been updated to work with Swift 4's `Codable` protocol so if saving custom objects directly to 
 `UserDefaults` is necessary then that object must support `NSCoding` and inherit from `NSObject`.
