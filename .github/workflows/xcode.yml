@@ -1,0 +1,14 @@
+name: Xcode build smoke test
+run-name: Build smoke test by ${{ @github.actor }}
+on:
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  smoke_test_build:
+    name: Smoke Test (Build only)
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build
+        run: xcodebuild
