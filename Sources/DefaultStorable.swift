@@ -33,34 +33,34 @@ public protocol DefaultStorable {
     static func clear(forKey key: String?)
 }
 
-extension DefaultStorable where Self: Codable {
-    public static var defaultIdentifier: String {
+public extension DefaultStorable where Self: Codable {
+    static var defaultIdentifier: String {
         return String(describing: type(of: self))
     }
 
-    public static var defaults: UserDefaults {
+    static var defaults: UserDefaults {
         return UserDefaults.standard
     }
 
-    public static var defaultValue: Self? {
+    static var defaultValue: Self? {
         return nil
     }
 
-    public func write(withKey key: String? = nil) {
+    func write(withKey key: String? = nil) {
         let key: String = key ?? Self.defaultIdentifier
         Self.defaults.df.store(self, forKey: key)
     }
 
-    public static func read(forKey key: String? = nil) -> Self? {
+    static func read(forKey key: String? = nil) -> Self? {
         let key: String = key ?? defaultIdentifier
         return defaults.df.fetch(forKey: key, type: Self.self) ?? defaultValue
     }
 
-    public func clear(forKey key: String? = nil) {
+    func clear(forKey key: String? = nil) {
         type(of: self).clear(forKey: key)
     }
 
-    public static func clear(forKey key: String? = nil) {
+    static func clear(forKey key: String? = nil) {
         let key: String = key ?? Self.defaultIdentifier
         return Self.defaults.removeObject(forKey: key)
     }
