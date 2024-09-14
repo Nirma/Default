@@ -1,5 +1,5 @@
 name: Xcode build smoke test
-run-name: Build smoke test by ${{ @github.actor }}
+run-name: Build smoke test by ${{ github.actor }}
 on:
   pull_request:
     branches: [ "main" ]
