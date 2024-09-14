@@ -32,7 +32,7 @@ public final class Default<Base> {
 
 public protocol DefaultCompatible {
     associatedtype CompatibleType
-    
+
     var df: CompatibleType { get }
 }
 
